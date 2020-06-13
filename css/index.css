@@ -56,11 +56,11 @@ html, body {
 }
 #navbar a:hover {
   color: gray;
-  border-bottom: 3px solid #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
 }
 #navbar a.active {
   color: gray;
-  border-bottom: 3px solid #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
 }
 #header #navbar #hire-me-link {
   font-size: 1rem;
@@ -612,8 +612,8 @@ input[type=submit]:hover {
 
 /* Skills section */
 .skills {
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   color: #f1f1f1;
 }
 .skills h1 {
@@ -629,23 +629,28 @@ input[type=submit]:hover {
 .bar {
   background: #353b48;
   display: block;
-  height: 5px;
+  height: 6px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0 0 10px #2187e7b3;
 }
 .bar span {
-  height: 5px;
+  height: 6px;
   float: left;
-  background: brown;
+  background: red;
+}
+.percentage {
+  color: brown;
+  text-align: center;
+  padding: 10px;
 }
 .html {
   width: 80%;
   animation: html 2s;
 }
 .css {
-  width: 70%;
+  width: 75%;
   animation: css 2s;
 }
 .bootstrap {
@@ -657,7 +662,7 @@ input[type=submit]:hover {
   animation: javascript 2s;
 }
 .react {
-  width: 70%;
+  width: 65%;
   animation: react 2s;
 }
 .node {
@@ -686,7 +691,7 @@ input[type=submit]:hover {
     width: 0%;
   }
   100% {
-    width: 70%;
+    width: 75%;
   }
 }
 @keyframes bootstrap {
@@ -710,7 +715,7 @@ input[type=submit]:hover {
     width: 0%;
   }
   100% {
-    width: 70%;
+    width: 65%;
   }
 }
 @keyframes node {
