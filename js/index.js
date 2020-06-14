@@ -19,50 +19,118 @@
     });
   
 });
+// End of Scroll to Top button code section
 
 
 
-// Appear on scroll down Newsletter signup form
-$(document).scroll(function() {
-  var y = $(this).scrollTop(),
-      news = $('.news');
-  if (y > 800) {
-    news.fadeIn();
-  } else {
-    news.fadeOut();
-  }
- });
+// Form Errors Validation Messages
+  $(function() {
+    $("username_error_message").hide();
+    $("email_error_message").hide();
+    $("subject_error_message").hide();
+    $("textarea_error_message").hide();
 
 
+      var username_error = false;
+      var email_error = false;
+      var subject_error = false;
+      var textarea_error = false;
 
-/* projects section code */
-const buttons = document.querySelectorAll("li");
-const section = document.querySelectorAll(".thumb");
-let values = "all";
-filter(values);
 
-function filter(values){
-  section.forEach(show => {
-    show.style.display = "none";
-    if(show.getAttribute("data-id") === values || values === "all") {
-      show.style.display = "block";
-    }
-  });
-}
-
-// show images
-buttons.forEach(item => {
-  item.addEventListener("click", ()=> {
-    buttons.forEach(item => {
-      item.className = "";
+    $("#username").focusout(function() {
+      check_username();
     });
-    item.className = "active-link"; 
-    let values = item.textContent;
-    // called the filter function here
-    filter(values);
-  });
-});
+    $("#email").focusout(function() {
+      check_email();
+    });
+    $("#subject").focusout(function() {
+      check_subject();
+    });
+    $("#textarea").focusout(function() {
+      check_textarea();
+    });
 
+
+    // function check_username() {
+    //   var username_length = $("#username").val().length;
+    //   if(username_length < 5 || username_length > 20) {
+    //     $("#name_error_message").html("Must be between 5-20 characters long");
+    //     $("#name_error_message").show();
+    //     username_error = true;
+    //   } else {
+    //     $("#name_error_message").hide();
+    //   }
+    // }
+
+    function check_username() {
+      var name_pattern = new RegExp(/^[A-Za-z]+\s?([A-Za-z]+)?$/);
+      if(name_pattern.test($("#username").val())) {
+        $("#username_error_message").hide();
+      } else {
+        $("#username_error_message").html("Please enter a valid name");
+        $("#username_error_message").show();
+        username_error = true;
+      }
+    }
+
+    function check_email() {
+      var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+      if(pattern.test($("#email").val())) {
+        $("#email_error_message").hide();
+      } else {
+        $("#email_error_message").html("Please enter a valid email address");
+        $("#email_error_message").show();
+        email_error = true;
+      }
+    }
+  
+    function check_subject() {
+      var user_subject = $("#subject").val().length;
+      if(user_subject < 5 || user_subject > 20) {
+        $("#subject_error_message").html("Subject must be between 5-30 characters long");
+        $("#subject_error_message").show();
+        subject_error = true;
+      } else {
+        $("#subject_error_message").hide();
+      }
+    }
+  
+    function check_textarea() {
+      var textarea_length = $("#textarea").val().length;
+      if(textarea_length < 10 || textarea_length > 20) {
+        $("#textarea_error_message").html("Message must be between 10-30 characters long");
+        $("#textarea_error_message").show();
+        textarea_error = true;
+      } else {
+        $("#textarea_error_message").hide();
+      }
+    }
+  
+    $("#contact_me_form").submit(function() {
+      var username_error = false;
+      var email_error = false;
+      var subject_error = false;
+      var textarea_error = false;
+  
+      check_username();
+      check_email();
+      check_subject();
+      check_textarea();
+  
+      if(
+        username_error == false && 
+        email_error == false && 
+        subject_error == false && 
+        textarea_error == false) {
+          return true;
+        } else {
+          return false;
+        }
+    })
+
+  });
+
+// End of Form Errors Validation Messages
 
 
 
@@ -133,3 +201,4 @@ function init() {
   // Init TypeWriter
   new TypeWriter(txtElement, words, wait);
 }
+
